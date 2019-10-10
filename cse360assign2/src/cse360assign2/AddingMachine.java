@@ -1,4 +1,5 @@
 package cse360assign2;
+import java.util.Scanner;
 /**Assignment 2
  * File contains an Adding machine class, which will add, subtract,
  * clear and get the total.
@@ -17,13 +18,17 @@ public class AddingMachine {
  * until clear. will be able to get the total and print all calculations when needed.
  * 
  */
+	
 	private int total;
+	StringBuffer history;
 	/**
 	 * only needed to start the running total at zero. 
-	 * does not return anything other than clarifying the start number.
+	 * does not return anything other than clarifying the start number
+	 * and setting up string buffer for printing the history.
 	 */
 	public AddingMachine () {
 		total =0;  // not needed - included  for clarity
+		history = new StringBuffer("0");
 	}
 	/**
 	 * gives the user the total number or the number that the current
@@ -31,34 +36,37 @@ public class AddingMachine {
 	 * @return 0, which is the current total
 	 */
 	public int getTotal () {
-		return 0;
+		return total;
 	}
 	/**
-	 * adds the the inputted number to the current total of
+	 * adds the the inputed number to the current total of
 	 * the number.
 	 * @param value, input  to add to the number
 	 */
 	public void add (int value) {
-		
+		total = total + value;
+		history.append(" + " + value);
 	}
 	/**
-	 * subtracts from tne total or the current sate of the number.
-	 * @param value, integer value to subtractt 
+	 * subtracts from the total or the current sate of the number.
+	 * @param value, integer value to subtract 
 	 */
 	public void subtract (int value) {
-		
+		total = total - value;
+		history.append(" - " + value);
 	}
 	/**
 	 * used to print out the history of the calculations
 	 */
 	public String toString () {
-		return "";
+		return history.toString();
 	}
 	/**
 	 * clears the history
 	 */
 	public void clear() {
-		
+		total = 0;
+		history.delete(0, history.length());
 	}
 
 }
